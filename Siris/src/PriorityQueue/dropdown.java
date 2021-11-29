@@ -192,7 +192,7 @@ public class dropdown extends javax.swing.JFrame {
                 }
             
                 JOptionPane.showMessageDialog(this, "Login Berhasil,Anda Login Sebagai "+lvl);
-                MainMenu formHome = new MainMenu();
+                Dashboard formHome = new Dashboard();
                 formHome.show();
                 this.setVisible(false);
             }else{

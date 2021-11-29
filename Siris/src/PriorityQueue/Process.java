@@ -18,7 +18,7 @@ class Process {
     public Process(int newNumber, int newPriority,String nama){
         processNumber = newNumber;
         priority = newPriority;
-        timeToCompletion = 1;
+        timeToCompletion = 2;
         this.nama = nama;
     }
     
