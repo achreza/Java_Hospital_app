@@ -288,11 +288,9 @@ public class ManajemenUser extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Heaps.Heap heaps = new Heaps.Heap(1);
-        add(heaps);
-        tampil(heaps);
+        
+        add();
 
-        resetInputan();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -362,7 +360,7 @@ public class ManajemenUser extends javax.swing.JFrame {
         String password = tabelUser.getValueAt(row, 1).toString();
         String level = tabelUser.getValueAt(row, 2).toString();
         
-        txtUsername.setEditable(false);
+        
         txtUsername.setText(username);
         txtPass.setText(password);
         cbLevel.setSelectedItem(level);
@@ -374,7 +372,7 @@ public class ManajemenUser extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public void add(Heap heaps) {
+    public void add() {
          String username = txtUsername.getText();
         String password = txtPass.getText();
         String level = (String) cbLevel.getSelectedItem();
@@ -400,15 +398,7 @@ public class ManajemenUser extends javax.swing.JFrame {
 
     }
 
-    public void tampil(Heap heaps) {
-        tabelUser.setValueAt(nomer++, x, 0);
-        tabelUser.setValueAt(heaps.getData().getNama(), x, 1);
-        tabelUser.setValueAt(heaps.getData().getUmur(), x, 2);
-        tabelUser.setValueAt(heaps.getData().getJk(), x, 3);
-        tabelUser.setValueAt(heaps.getData().getTelpon(), x, 4);
-        tabelUser.setValueAt(heaps.getData().getAlamat(), x, 5);
-        x++;
-    }
+    
 
     public void resetInputan() {
         txtUsername.setText("");
