@@ -111,6 +111,9 @@ public class TambahDokter extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tableMouseEntered(evt);
+            }
         });
         jScrollPane1.setViewportView(table);
 
@@ -317,6 +320,10 @@ public class TambahDokter extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_studioActionPerformed
+
+    private void tableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableMouseEntered
 
     /**
      * @param args the command line arguments
