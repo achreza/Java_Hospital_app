@@ -450,6 +450,7 @@ public class KonsulDokter extends javax.swing.JFrame {
             while (rs.next()) {
                 lblNamaDokter.setText(rs.getString("nama"));
                 txtSpesialis.setText(rs.getString("spesialis"));
+                id_dokter = rs.getInt("id");
               
         ImageIcon icon = new ImageIcon(rs.getString("foto"));
         fotoPlaceholder.setIcon(icon);
