@@ -79,7 +79,7 @@ public class ManajemenUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,6 +106,11 @@ public class ManajemenUser extends javax.swing.JFrame {
         });
 
         cbLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manajer", "Admin", "Pasien" }));
+        cbLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbLevelActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         jButton1.setText("SIMPAN");
@@ -151,9 +156,8 @@ public class ManajemenUser extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Data User");
 
-        btnHapus.setBackground(new java.awt.Color(255, 0, 0));
+        btnHapus.setBackground(new java.awt.Color(255, 255, 255));
         btnHapus.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        btnHapus.setForeground(new java.awt.Color(255, 255, 255));
         btnHapus.setText("HAPUS");
         btnHapus.setBorder(null);
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -178,8 +182,8 @@ public class ManajemenUser extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(204, 0, 0));
+        jButton2.setForeground(new java.awt.Color(204, 0, 0));
         jButton2.setText("X");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -371,6 +375,10 @@ public class ManajemenUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cbLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLevelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbLevelActionPerformed
 
     public void add() {
          String username = txtUsername.getText();

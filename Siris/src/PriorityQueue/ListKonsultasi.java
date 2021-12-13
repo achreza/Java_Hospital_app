@@ -93,11 +93,11 @@ public class ListKonsultasi extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("List Konsultasi");
+        jLabel2.setText("Data Konsultasi");
 
         jButton1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         jButton1.setText("SUDAH DITANGANI");
@@ -112,8 +112,8 @@ public class ListKonsultasi extends javax.swing.JFrame {
         lblNamaDokter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNamaDokter.setText("Achmad Fahreza");
 
-        jButton2.setBackground(new java.awt.Color(255, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(204, 0, 0));
+        jButton2.setForeground(new java.awt.Color(204, 0, 0));
         jButton2.setText("X");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
