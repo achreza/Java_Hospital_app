@@ -35,6 +35,7 @@ public class KonsulDokter extends javax.swing.JFrame {
         ambilNama();
         
         
+        
     }
 
 //    public void selectData() throws SQLException {
@@ -421,7 +422,7 @@ public class KonsulDokter extends javax.swing.JFrame {
                 baris = rs.getRow();
             }
             if(baris ==1){
-                JOptionPane.showMessageDialog(null, "Data Member ditemukan ! Lnagsung isi keluhan anda");
+                JOptionPane.showMessageDialog(null, "Data Member ditemukan ! Langsung isi keluhan anda");
                 txtNik.setText(String.valueOf(model.getNik()));
                 txtNama.setText(model.getNama());
                 txtUmur.setText(String.valueOf(model.getUmur()));
@@ -454,6 +455,7 @@ public class KonsulDokter extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(rs.getString("foto"));
         fotoPlaceholder.setIcon(icon);
             }
+            
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error : "+e.getMessage());
