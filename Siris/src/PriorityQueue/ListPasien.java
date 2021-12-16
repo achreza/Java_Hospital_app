@@ -5,7 +5,9 @@
  */
 package PriorityQueue;
 
+import Heaps.DataArray;
 import Heaps.Heap;
+import Heaps.Node;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,33 +21,34 @@ import javax.swing.table.DefaultTableModel;
  * @author 62852
  */
 public class ListPasien extends javax.swing.JFrame {
-    
-    int x=0,nomer=1;
+
+    int x = 0, nomer = 1;
     /**
      * Creates new form Member
      */
     Statement stm;
+
     public ListPasien() throws SQLException {
         koneksi con = new koneksi();
         stm = (Statement) con.getConnection().createStatement();
         initComponents();
         selectData();
     }
-    
-    public void selectData() throws SQLException{
+
+    public void selectData() throws SQLException {
         String query = "select * from data_pasien";
         ResultSet rs = stm.executeQuery(query);
-        while(rs.next()){
-            this.insertTable(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6));
+        while (rs.next()) {
+            this.insertTable(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6));
         }
     }
-    
-    public void insertTable(int nik, String nama,int umur, String jk, String telpon, String alamat){
+
+    public void insertTable(int nik, String nama, int umur, String jk, String telpon, String alamat) {
         DefaultTableModel model = (DefaultTableModel) tabelMember.getModel();
-        model.addRow(new Object[] {nik,nama,umur,jk,telpon,alamat});
+        model.addRow(new Object[]{nik, nama, umur, jk, telpon, alamat});
     }
-    
-    public void resetTable(){
+
+    public void resetTable() {
         DefaultTableModel model = (DefaultTableModel) tabelMember.getModel();
         model.setRowCount(0);
     }
@@ -81,6 +84,10 @@ public class ListPasien extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,7 +156,7 @@ public class ListPasien extends javax.swing.JFrame {
 
             },
             new String [] {
-                "No.", "Nama", "Umur", "Jenis Kelamin", "No.Telepon", "Alamat"
+                "NIK", "Nama", "Umur", "Jenis Kelamin", "No.Telepon", "Alamat"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -225,6 +232,24 @@ public class ListPasien extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Yu Gothic", 0, 13)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Cari berdasarkan NIK");
+
+        jButton3.setText("Cari");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Tampilkan Semua Data");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -260,8 +285,18 @@ public class ListPasien extends javax.swing.JFrame {
                                     .addComponent(txtNik))
                                 .addGap(90, 90, 90)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8)))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(11, 11, 11)
+                                        .addComponent(jButton3))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel8)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButton4))
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(496, 496, 496)
                         .addComponent(jLabel2)
@@ -280,7 +315,8 @@ public class ListPasien extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(jButton4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -314,7 +350,12 @@ public class ListPasien extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                        .addGap(329, 329, 329))))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton3)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(270, 270, 270))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -352,9 +393,9 @@ public class ListPasien extends javax.swing.JFrame {
         Heaps.Heap heaps = new Heaps.Heap(1);
         add(heaps);
         tampil(heaps);
-        
+
         resetInputan();
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtNikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNikActionPerformed
@@ -363,10 +404,10 @@ public class ListPasien extends javax.swing.JFrame {
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
-         String nik = txtNik.getText();
-        int confirmed = JOptionPane.showConfirmDialog(this, "Yakin menghapus?", "ya",JOptionPane.YES_NO_OPTION);
-        if (confirmed == JOptionPane.YES_OPTION){
-            String query = "DELETE FROM data_pasien WHERE nik = "+nik+"";
+        String nik = txtNik.getText();
+        int confirmed = JOptionPane.showConfirmDialog(this, "Yakin menghapus?", "ya", JOptionPane.YES_NO_OPTION);
+        if (confirmed == JOptionPane.YES_OPTION) {
+            String query = "DELETE FROM data_pasien WHERE nik = " + nik + "";
             try {
                 stm.executeUpdate(query);
                 this.resetInputan();
@@ -386,20 +427,19 @@ public class ListPasien extends javax.swing.JFrame {
         String jk = (String) cbJk.getSelectedItem();
         String telpon = txtTelpon.getText();
         String alamat = txtAlamat.getText();
-       
-        
+
         try {
-             koneksi db = new koneksi();
-             stm = (Statement) db.getConnection().createStatement();
-             String query = "UPDATE data_pasien SET nama = '"+nama+"', umur="+umur+", jk='"+jk+"', telpon='"+telpon+"', alamat='"+alamat+"' WHERE nik='"+nik+"'";
-             stm.executeUpdate(query);
-             JOptionPane.showMessageDialog(null, "data berhasil di update");
-             ListPasien m = new ListPasien();
-             m.setVisible(true);
-             this.dispose();
-             
+            koneksi db = new koneksi();
+            stm = (Statement) db.getConnection().createStatement();
+            String query = "UPDATE data_pasien SET nama = '" + nama + "', umur=" + umur + ", jk='" + jk + "', telpon='" + telpon + "', alamat='" + alamat + "' WHERE nik='" + nik + "'";
+            stm.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "data berhasil di update");
+            ListPasien m = new ListPasien();
+            m.setVisible(true);
+            this.dispose();
+
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, "gagal! "+e.getMessage());
+            JOptionPane.showConfirmDialog(null, "gagal! " + e.getMessage());
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -436,46 +476,79 @@ public class ListPasien extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-    
-    
-    public void add(Heap heaps){
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tabelMember.getModel();
+        Node node = null;
+        int key = Integer.parseInt(txtID.getText());
+        DataArray data = new DataArray(100);
+
+        for (int i = 0; i < tabelMember.getRowCount(); i++) {
+            int NIK = Integer.parseInt(model.getValueAt(i, 0).toString());
+            String name = model.getValueAt(i, 1).toString();
+            int umur = Integer.parseInt(model.getValueAt(i, 2).toString());
+            String jk = model.getValueAt(i, 3).toString();
+            String phone = model.getValueAt(i, 4).toString();
+            String alamat = model.getValueAt(i, 5).toString();
+            data.insert(NIK, name, umur, jk, phone, alamat);
+        }
+
+        resetTable();
+
+        node = data.binarySearch(key);
+        insertTable(node.getNIK(), node.getNama(), node.getUmur(), node.getJk(), node.getTelpon(), node.getAlamat());
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            // TODO add your handling code here:
+            resetTable();
+            txtID.setText("");
+            selectData();
+        } catch (SQLException ex) {
+            Logger.getLogger(ListPasien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    public void add(Heap heaps) {
         int nik = Integer.parseInt(txtNik.getText());
         String nama = txtNama.getText();
         int umur = Integer.parseInt(txtUmur.getText());
         String jk = (String) cbJk.getSelectedItem();
         String telpon = txtTelpon.getText();
         String alamat = txtAlamat.getText();
-        heaps.insert(nik,nama,umur,jk,telpon,alamat);
-        
-        String query = "INSERT INTO data_pasien VALUES ("+nik+",'"+nama+"',"+umur+",'"+jk+"',"+"'"+telpon+"',"+"'"+alamat+"')";
-        JOptionPane.showMessageDialog(null,"Input Data Berhasil");
+        heaps.insert(nik, nama, umur, jk, telpon, alamat);
+
+        String query = "INSERT INTO data_pasien VALUES (" + nik + ",'" + nama + "'," + umur + ",'" + jk + "'," + "'" + telpon + "'," + "'" + alamat + "')";
+        JOptionPane.showMessageDialog(null, "Input Data Berhasil");
         try {
             stm.executeUpdate(query);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ListPasien.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-       
+
     }
-    
-    public void tampil(Heap heaps){
+
+    public void tampil(Heap heaps) {
         tabelMember.setValueAt(nomer++, x, 0);
         tabelMember.setValueAt(heaps.getData().getNama(), x, 1);
         tabelMember.setValueAt(heaps.getData().getUmur(), x, 2);
         tabelMember.setValueAt(heaps.getData().getJk(), x, 3);
-        tabelMember.setValueAt(heaps.getData().getTelpon(), x,4);
+        tabelMember.setValueAt(heaps.getData().getTelpon(), x, 4);
         tabelMember.setValueAt(heaps.getData().getAlamat(), x, 5);
         x++;
     }
-    
-    public void resetInputan(){
+
+    public void resetInputan() {
         txtNama.setText("");
         txtUmur.setText("");
         cbJk.setSelectedIndex(0);
         txtTelpon.setText("");
         txtAlamat.setText("");
     }
+
     /**
      * @param args the command line arguments
      */
@@ -523,6 +596,8 @@ public class ListPasien extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbJk;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -531,10 +606,12 @@ public class ListPasien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelMember;
     private javax.swing.JTextField txtAlamat;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNik;
     private javax.swing.JTextField txtTelpon;

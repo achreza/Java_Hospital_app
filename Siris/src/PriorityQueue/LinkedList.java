@@ -26,8 +26,7 @@ public class LinkedList {
             return;
         }
         this.rear.next = newLink;
-        this.rear = newLink;
-        
+        this.rear = newLink;        
     }
 
     public void remove() {
