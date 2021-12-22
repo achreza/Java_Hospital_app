@@ -5,6 +5,7 @@
  */
 package PriorityQueue;
 
+import java.awt.Color;
 import java.util.Scanner;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -100,6 +101,12 @@ public class dropdown extends javax.swing.JFrame {
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel4MouseExited(evt);
             }
         });
 
@@ -243,6 +250,16 @@ public class dropdown extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jPanel4MouseExited
 
     /**
      * @param args the command line arguments
