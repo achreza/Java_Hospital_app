@@ -296,7 +296,6 @@ public class Member extends javax.swing.JFrame {
         Heaps.Heap heaps = new Heaps.Heap(1);
         add(heaps);
         tampil(heaps);
-        
         resetInputan();
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -319,6 +318,7 @@ public class Member extends javax.swing.JFrame {
         String telpon = txtTelpon.getText();
         String alamat = txtAlamat.getText();
         heaps.insert(nik,nama,umur,jk,telpon,alamat);
+        heaps.displayHeapDua();
         
         String query = "INSERT INTO data_pasien VALUES ("+nik+",'"+nama+"',"+umur+",'"+jk+"',"+"'"+telpon+"',"+"'"+alamat+"')";
         JOptionPane.showMessageDialog(null,"Input Data Berhasil");

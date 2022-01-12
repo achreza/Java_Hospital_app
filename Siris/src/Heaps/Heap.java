@@ -78,6 +78,46 @@ public class Heap {
         }
     }
     
+    public void displayHeapDua(){
+        System.out.println("Heap Array: ");
+        for (int i = 0; i < currentSize; i++) {
+            if (heapArray[i] != null) {
+                System.out.print(heapArray[i].getNIK()+" ");
+            }else{
+                System.out.println("--");
+            }
+        }
+        System.out.println("");
+        int nBlank=32;
+        int itemsPerRow=1;
+        int column=0;
+        int j=0;
+        String dots="..........................................................";
+        System.out.println(dots+dots);
+        while(currentSize > 0){
+            if (column==0) {
+                for (int k = 0; k < nBlank; k++) {
+                    System.out.print(' ');
+                }
+            }
+            System.out.print(heapArray[j].getNIK());
+            if (++j == currentSize) {
+                break;
+            }
+            if (++column == itemsPerRow) {
+                nBlank /=2;
+                itemsPerRow *=2;
+                column=0;
+                System.out.println();
+            }else{
+                for (int k = 0; k < nBlank*2-2; k++) {
+                    System.out.print(' ');
+                }
+            }
+        }
+        System.out.println("\n"+dots+dots);
+    }
+    
     public Node getData(){
         Node newNode = null;
         for (int i = 0; i < maxSize; i++) {
